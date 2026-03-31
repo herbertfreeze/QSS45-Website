@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QSS 45 — AI & Machine Learning for Social Science</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #00693E;
+      --green-light: #00894f;
+      --green-dark: #004d2d;
+      --green-muted: rgba(0, 105, 62, 0.08);
+      --green-muted-border: rgba(0, 105, 62, 0.15);
+      --bg: #fafbfc;
+      --surface: #ffffff;
+      --text: #1a1a2e;
+      --text-secondary: #5a5a72;
+      --text-tertiary: #8e8ea0;
+      --border: #e8e8ef;
+      --border-light: #f0f0f5;
+      --accent-warm: #ff6b35;
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---- NAV ---- */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    nav .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    nav .nav-brand {
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    nav .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    nav .nav-links a:hover { color: var(--green); }
+
+    /* ---- HERO ---- */
+    .hero {
+      padding: 10rem 2rem 5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--green);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 300;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      max-width: 800px;
+    }
+
+    .hero h1 strong {
+      font-weight: 700;
+      color: var(--green);
+    }
+
+    .hero-meta {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .hero-meta-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+    }
+
+    .hero-meta-value {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .hero-meta-value a {
+      color: var(--green);
+      text-decoration: none;
+      border-bottom: 1px solid var(--green-muted-border);
+      transition: border-color 0.2s;
+    }
+
+    .hero-meta-value a:hover { border-color: var(--green); }
+
+    /* ---- SECTIONS ---- */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    section + section {
+      border-top: 1px solid var(--border-light);
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 680px;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ---- OVERVIEW GRID ---- */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .overview-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .overview-card:hover {
+      border-color: var(--green-muted-border);
+      box-shadow: 0 4px 20px rgba(0, 105, 62, 0.06);
+    }
+
+    .overview-card-number {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--green);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+
+    .overview-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .overview-card p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ---- SCHEDULE TABLE ---- */
+    .schedule-wrapper {
+      overflow-x: auto;
+      margin-top: 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    thead {
+      background: var(--green);
+    }
+
+    thead th {
+      padding: 1rem 1.25rem;
+      text-align: left;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    thead th:first-child { border-radius: 11px 0 0 0; }
+    thead th:last-child { border-radius: 0 11px 0 0; }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border-light);
+      transition: background 0.15s;
+    }
+
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--green-muted); }
+
+    tbody td {
+      padding: 0.9rem 1.25rem;
+      vertical-align: top;
+    }
+
+    .session-num {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--green);
+    }
+
+    .date-cell {
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .topic-cell {
+      font-weight: 500;
+    }
+
+    .due-cell {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .due-cell strong {
+      color: var(--accent-warm);
+      font-weight: 600;
+    }
+
+    tr.row-break {
+      background: var(--green-muted);
+    }
+
+    tr.row-break td {
+      font-style: italic;
+      color: var(--text-tertiary);
+      font-size: 0.85rem;
+    }
+
+    tr.row-highlight {
+      background: rgba(0, 105, 62, 0.04);
+    }
+
+    tr.row-highlight .topic-cell {
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    tr.row-deadline {
+      background: none;
+    }
+
+    tr.row-deadline td {
+      color: var(--text-tertiary);
+      font-size: 0.85rem;
+    }
+
+    /* ---- DELIVERABLES ---- */
+    .deliverables-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .deliverable-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      transition: border-color 0.2s;
+    }
+
+    .deliverable-item:hover {
+      border-color: var(--green-muted-border);
+    }
+
+    .deliverable-weight {
+      font-family: var(--mono);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--green);
+      min-width: 52px;
+      text-align: right;
+      line-height: 1.2;
+    }
+
+    .deliverable-info h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .deliverable-info p {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* ---- POLICIES ---- */
+    .policies-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+
+    .policy-block h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .policy-block p,
+    .policy-block li {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .policy-block ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .policy-block ul li {
+      padding-left: 1.25rem;
+      position: relative;
+      margin-bottom: 0.4rem;
+    }
+
+    .policy-block ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.65em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--green);
+      opacity: 0.5;
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: var(--text-tertiary);
+    }
+
+    footer a {
+      color: var(--green);
+      text-decoration: none;
+    }
+
+    .footer-dart {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: var(--text-tertiary);
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.2rem; }
+      .hero { padding: 8rem 1.5rem 3rem; }
+      section { padding: 3rem 1.5rem; }
+      .hero-meta { gap: 2rem; }
+      .deliverables-grid { grid-template-columns: 1fr; }
+      .policies-grid { grid-template-columns: 1fr; }
+      nav .nav-links { gap: 1rem; }
+      nav .nav-links a { font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-brand">QSS 45</div>
+      <ul class="nav-links">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#deliverables">Deliverables</a></li>
+        <li><a href="#project">Final Project</a></li>
+        <li><a href="#policies">Policies</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Dartmouth College / Spring 2026</div>
+    <h1>Artificial Intelligence &amp; <strong>Machine Learning</strong> for Social Science</h1>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Instructor</span>
+        <span class="hero-meta-value"><a href="mailto:herbert@dartmouth.edu">Prof. Herbert Chang</a></span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Schedule</span>
+        <span class="hero-meta-value">Tue / Thu, 10:10 AM &ndash; 12:00 PM</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Office Hours</span>
+        <span class="hero-meta-value">Wed 9&ndash;10 AM, Silsby 124</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Term</span>
+        <span class="hero-meta-value">March 31 &ndash; June 8, 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <section id="overview">
+    <div class="section-label">01 &mdash; Overview</div>
+    <div class="section-title">What this course is about</div>
+    <div class="section-desc">
+      This course introduces contemporary methods in machine learning for social scientific inquiry.
+      We address the technological arms race between information generation&mdash;AI-created content
+      like deepfakes, podcasts, and synthetic media&mdash;and the analytical tools needed to study it.
+      Each class combines lecture with a hands-on workshop, culminating in a poster session and final paper.
+    </div>
+
+    <div class="overview-grid">
+      <div class="overview-card">
+        <div class="overview-card-number">01</div>
+        <h3>Regression &amp; Linear Algebra</h3>
+        <p>OLS, logistic regression, LASSO/Ridge, NumPy fundamentals, gradient descent optimization, and the mathematical foundations for everything that follows.</p>
+      </div>
+      <div class="overview-card">
+        <div class="overview-card-number">02</div>
+        <h3>Tree-Based Methods</h3>
+        <p>Decision trees, random forests, gradient-boosting (XGBoost, LightGBM, CatBoost), and model interpretation with SHAP values.</p>
+      </div>
+      <div class="overview-card">
+        <div class="overview-card-number">03</div>
+        <h3>Deep Learning</h3>
+        <p>Neural network fundamentals in PyTorch, word embeddings, and transformer architectures from BERT to GPT.</p>
+      </div>
+      <div class="overview-card">
+        <div class="overview-card-number">04</div>
+        <h3>LLM Augmentation</h3>
+        <p>Zero-shot classification, local models via Ollama, and GPT workflows for labeling, topic modeling, and synthetic data generation.</p>
+      </div>
+      <div class="overview-card">
+        <div class="overview-card-number">05</div>
+        <h3>Agentic Workflows</h3>
+        <p>Autonomous AI agents with OpenClaw: skills systems, tool integration, and building end-to-end pipelines that act on the world.</p>
+      </div>
+      <div class="overview-card">
+        <div class="overview-card-number">06</div>
+        <h3>Networks &amp; RL</h3>
+        <p>Social network analysis with NetworkX, centrality measures, graph visualization, and reinforcement learning fundamentals.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section id="schedule">
+    <div class="section-label">02 &mdash; Schedule</div>
+    <div class="section-title">Week by week</div>
+    <div class="section-desc">
+      All assignments due at 11:59 PM EST unless otherwise noted. The course follows the same deliverable structure as QSS 20.
+    </div>
+
+    <div class="schedule-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Topic</th>
+            <th>Due</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="date-cell">Tue 03/31</td>
+            <td class="topic-cell">Regression</td>
+            <td class="due-cell"><strong>First LaTeX Submission</strong> (Sun 04/05)</td>
+          </tr>
+          <tr>
+            <td class="date-cell">Thu 04/02</td>
+            <td class="topic-cell">Linear Algebra + NumPy</td>
+            <td class="due-cell"></td>
+          </tr>
+          <tr>
+            <td class="date-cell">Tue 04/07</td>
+            <td class="topic-cell">Gradient Descent</td>
+            <td class="due-cell"><strong>Exam 1</strong> (Sun 04/06)</td>
+          </tr>
+          <tr>
+            <td class="date-cell">Thu 04/09</td>
+            <td class="topic-cell">Decision Trees &amp; Random Forest</td>
+            <td class="due-cell"><strong>Quiz 1</strong></td>
+          </tr>
+          <tr>
+            <td class="date-cell">Tue 04/14</td>
+            <td class="topic-cell">Gradient-Boosting Trees</td>
+            <td class="due-cell"></td>
+          </tr>
+          <tr>
+            <td class="date-cell">Thu 04/16</td>
+            <td class="topic-cell">SHAP Explainers</td>
+            <td class="due-cell"><strong>NotebookLLM Lit Review</strong> (Sun 04/26)</td>
+          </tr>
+          <tr>
+            <td class="date-cell">Tue 04/21</td>
+            <td class="topic-cell">Neural Networks</td>
+            <td class="due-cell"><strong>Quiz 2</strong></td>
+          </tr>
+          <tr class="row-break">
+            <td class="date-cell">Thu 04/23</td>
+            <td>Conference &mdash; No Class</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="date-cell">Tue 04/28</td>
+            <td class="topic-cell">Flavors of Deep Learning</td>
+            <td class="due-cell"><strong>Initial Data Analysis</strong> (Wed 04/30)</td>
+          </tr>
+          <tr>
+            <td class="date-cell">Thu 04/30</td>
+            <td class="topic-cell">Zero-Shot + Ollama</td>
+            <td class="due-cell"><strong>Quiz 3</strong></td>
+          </tr>
+          <tr>
+            <td class="date-cell">Tue 05/05</td>
+            <td class="topic-cell">LLM Workflows</td>
+            <td class="due-cell"></td>
+          </tr>
+          <tr>
+            <td class="date-cell">Thu 05/07</td>
+            <td class="topic-cell">OpenClaw: AI Agents in Practice</td>
+            <td class="due-cell"><strong>Exam 2 (Agentic)</strong> (Sun 05/11)</td>
+          </tr>
+          <tr>
+            <td class="date-cell">Tue 05/12</td>
+            <td class="topic-cell">Social Network Analysis</td>
+            <td class="due-cell"><strong>Quiz 4</strong></td>
+          </tr>
+          <tr>
+            <td class="date-cell">Thu 05/14</td>
+            <td class="topic-cell">Reinforcement Learning</td>
+            <td class="due-cell"></td>
+          </tr>
+          <tr>
+            <td class="date-cell">Tue 05/19</td>
+            <td class="topic-cell">Work Session</td>
+            <td class="due-cell"><strong>Quiz 5</strong></td>
+          </tr>
+          <tr>
+            <td class="date-cell">Thu 05/21</td>
+            <td class="topic-cell">Work Session</td>
+            <td class="due-cell"></td>
+          </tr>
+          <tr>
+            <td class="date-cell">Tue 05/26</td>
+            <td class="topic-cell">Grouped Meetings</td>
+            <td class="due-cell"><strong>Milestone 2</strong> (progress report)</td>
+          </tr>
+          <tr>
+            <td class="date-cell">Thu 05/28</td>
+            <td class="topic-cell">Grouped Meetings</td>
+            <td class="due-cell"></td>
+          </tr>
+          <tr>
+            <td class="date-cell">Tue 06/02</td>
+            <td class="topic-cell">Poster Session</td>
+            <td class="due-cell">Last day of class</td>
+          </tr>
+          <tr>
+            <td class="date-cell">Tue 06/08</td>
+            <td class="topic-cell">Final Deliverables due (paper + repo + transparency report)</td>
+            <td class="due-cell"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- DELIVERABLES -->
+  <section id="deliverables">
+    <div class="section-label">03 &mdash; Deliverables</div>
+    <div class="section-title">How you're evaluated</div>
+    <div class="section-desc">
+      Grading follows the same structure as QSS 20. All deadlines are shared across both courses.
+    </div>
+
+    <div class="deliverables-grid">
+      <div class="deliverable-item">
+        <div class="deliverable-weight">10%</div>
+        <div class="deliverable-info">
+          <h4>Quizzes</h4>
+          <p>Five in-class quizzes, drop lowest. Distributed across the term covering recent material.</p>
+        </div>
+      </div>
+      <div class="deliverable-item">
+        <div class="deliverable-weight">5%</div>
+        <div class="deliverable-info">
+          <h4>Exam 1</h4>
+          <p>Covers regression through SHAP. Due Sun 04/06.</p>
+        </div>
+      </div>
+      <div class="deliverable-item">
+        <div class="deliverable-weight">10%</div>
+        <div class="deliverable-info">
+          <h4>Exam 2 (Agentic)</h4>
+          <p>Covers neural nets through LLM and agentic workflows. Due Sun 05/11.</p>
+        </div>
+      </div>
+      <div class="deliverable-item">
+        <div class="deliverable-weight">10%</div>
+        <div class="deliverable-info">
+          <h4>Me Search</h4>
+          <p>A reflective research exercise connecting course methods to your own interests and questions.</p>
+        </div>
+      </div>
+      <div class="deliverable-item">
+        <div class="deliverable-weight">10%</div>
+        <div class="deliverable-info">
+          <h4>NotebookLLM Lit Review</h4>
+          <p>AI-assisted literature review using NotebookLLM. Due Sun 04/26.</p>
+        </div>
+      </div>
+      <div class="deliverable-item">
+        <div class="deliverable-weight">15%</div>
+        <div class="deliverable-info">
+          <h4>Initial Data Analysis</h4>
+          <p>Overleaf memo exploring possible questions, relevant data fields, and preliminary findings. Due Wed 04/30.</p>
+        </div>
+      </div>
+      <div class="deliverable-item">
+        <div class="deliverable-weight">5%</div>
+        <div class="deliverable-info">
+          <h4>Milestone 2</h4>
+          <p>Progress report during grouped meetings while Prof. is at conference. Week of 05/26.</p>
+        </div>
+      </div>
+      <div class="deliverable-item">
+        <div class="deliverable-weight">35%</div>
+        <div class="deliverable-info">
+          <h4>Final Deliverables</h4>
+          <p>Poster presentation + paper + GitHub repo + transparency report. Poster session 06/02, paper due 06/08.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL PROJECT -->
+  <section id="project">
+    <div class="section-label">04 &mdash; Final Project</div>
+    <div class="section-title">From proposal to poster</div>
+    <div class="section-desc">
+      A PNAS-style scientific report (~10 pages) applying course methods to a social science research question.
+      All submissions are individual.
+    </div>
+
+    <div class="overview-grid">
+      <div class="overview-card">
+        <div class="overview-card-number">15%</div>
+        <h3>Initial Data Analysis</h3>
+        <p>Overleaf memo exploring possible questions, relevant data fields, and preliminary findings. Individual submission. Due Wed 04/30.</p>
+      </div>
+      <div class="overview-card">
+        <div class="overview-card-number">5%</div>
+        <h3>Milestone 2</h3>
+        <p>Progress report during grouped meetings while Prof. is at conference. Due during meetings week of 05/26.</p>
+      </div>
+      <div class="overview-card">
+        <div class="overview-card-number">35%</div>
+        <h3>Final Deliverables</h3>
+        <p>Poster presentation + PNAS-style paper + GitHub repo + transparency report. Poster session Tue 06/02, paper due Tue 06/08.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- POLICIES -->
+  <section id="policies">
+    <div class="section-label">05 &mdash; Policies</div>
+    <div class="section-title">Course expectations</div>
+
+    <div class="policies-grid">
+      <div class="policy-block">
+        <h3>Academic Honor</h3>
+        <p>Violations result in a failing grade. Proper attribution is required per Dartmouth's Institute for Writing and Rhetoric standards.</p>
+      </div>
+      <div class="policy-block">
+        <h3>AI Tools Policy</h3>
+        <p>You may use ChatGPT and other AI tools provided you:</p>
+        <ul>
+          <li>Give explicit notice of which tool was used and how</li>
+          <li>Rigorously test and alter AI-generated code</li>
+          <li>Understand all submitted code and can explain it</li>
+          <li>Write all comments and prose in your own words</li>
+        </ul>
+      </div>
+      <div class="policy-block">
+        <h3>Attendance</h3>
+        <p>Two unexcused absences are permitted without grade penalty. Complete readings before each class and contribute to discussion. No laptops in class except for accessibility accommodations.</p>
+      </div>
+      <div class="policy-block">
+        <h3>Accessibility &amp; Wellness</h3>
+        <p>Register with Student Accessibility Services (SAS) and request an accommodation email. Religious observance conflicts should be raised by end of week 2. Counseling and wellness resources are available through the Student Wellness Center.</p>
+      </div>
+      <div class="policy-block">
+        <h3>Course Materials</h3>
+        <p>No required textbooks. All readings are available via Canvas, GitHub, or direct hyperlinks. Python Jupyter notebooks are provided for every workshop session.</p>
+      </div>
+      <div class="policy-block">
+        <h3>Office Hours</h3>
+        <p>Wednesday 9&ndash;10 AM in Silsby 124 or via Zoom. Additional peer tutoring sessions will be announced on Slack.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>QSS 45 &mdash; Spring 2026 &mdash; <a href="https://www.dartmouth.edu">Dartmouth College</a></p>
+    <div class="footer-dart">Department of Quantitative Social Science</div>
+  </footer>
+
+</body>
+</html>
