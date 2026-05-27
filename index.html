@@ -333,6 +333,25 @@
       font-size: 0.85rem;
     }
 
+    /* ---- SUBSECTION ---- */
+    .subsection-label {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .subsection-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-top: 0.6rem;
+      max-width: 720px;
+    }
+
     /* ---- DELIVERABLES ---- */
     .deliverables-grid {
       display: grid;
@@ -661,12 +680,12 @@
           </tr>
           <tr>
             <td class="date-cell">Tue 06/02</td>
-            <td class="topic-cell">Presentations</td>
+            <td class="topic-cell">Presentations (6 min each)</td>
             <td class="due-cell">Last day of class</td>
           </tr>
           <tr>
             <td class="date-cell">Sun 06/07</td>
-            <td class="topic-cell">Final Deliverables due (paper + repo + transparency report + Exam 2 reflection)</td>
+            <td class="topic-cell">Final Deliverables due (paper + repo + website + agentic analysis)</td>
             <td class="due-cell"></td>
           </tr>
         </tbody>
@@ -701,7 +720,7 @@
         <div class="deliverable-weight">10%</div>
         <div class="deliverable-info">
           <h4>Exam 2 (Agentic)</h4>
-          <p>Take-home reflection on agentic AI workflow, tied to the final project. Submit alongside final deliverables Sun 06/07.</p>
+          <p>Folded into the final project as the <em>agentic analysis</em> section of the paper: AI assistant transcripts plus a critical reflection on what you asked, accepted, rejected, and where the AI failed.</p>
         </div>
       </div>
       <div class="deliverable-item">
@@ -736,7 +755,7 @@
         <div class="deliverable-weight">35%</div>
         <div class="deliverable-info">
           <h4>Final Deliverables</h4>
-          <p>Final presentation + paper + GitHub repo + transparency report. Presentations 06/02, paper due Sun 06/07.</p>
+          <p>Paper (with agentic analysis) + GitHub repo + public project website + 6-min presentation. Presentations Tue 06/02, everything else due Sun 06/07.</p>
         </div>
       </div>
     </div>
@@ -747,7 +766,7 @@
     <div class="section-label">04 &mdash; Final Project</div>
     <div class="section-title">From proposal to presentation</div>
     <div class="section-desc">
-      A PNAS-style scientific report (~10 pages) applying course methods to a social science research question.
+      A PNAS-style scientific report (8 pages, written in LaTeX) applying course methods to a social science research question.
       All submissions are individual.
     </div>
 
@@ -755,7 +774,7 @@
       <div class="overview-card">
         <div class="overview-card-number">15%</div>
         <h3>Initial Data Analysis</h3>
-        <p>Overleaf memo exploring possible questions, relevant data fields, and preliminary findings. Individual submission. Due Wed 04/30.</p>
+        <p>Overleaf memo exploring possible questions, relevant data fields, and preliminary findings. Individual submission. Due Sun 05/10.</p>
       </div>
       <div class="overview-card">
         <div class="overview-card-number">5%</div>
@@ -765,7 +784,43 @@
       <div class="overview-card">
         <div class="overview-card-number">35%</div>
         <h3>Final Deliverables</h3>
-        <p>Final presentation + PNAS-style paper + GitHub repo + transparency report. Presentations Tue 06/02, paper due Sun 06/07.</p>
+        <p>PNAS-style paper (with agentic analysis section) + GitHub repo + public project website + 6-min presentation. Presentations Tue 06/02, all other deliverables due Sun 06/07.</p>
+      </div>
+    </div>
+
+    <div class="subsection-label">Submission requirements</div>
+    <div class="subsection-desc">
+      Each component is graded against an explicit rubric. The four pieces below make up the 35% Final Deliverables weight.
+    </div>
+
+    <div class="deliverables-grid">
+      <div class="deliverable-item">
+        <div class="deliverable-weight">PAPER</div>
+        <div class="deliverable-info">
+          <h4>PNAS-style paper (8 pages, LaTeX)</h4>
+          <p>Build in Overleaf from the <a href="https://www.overleaf.com/gallery/tagged/pnas" target="_blank" rel="noopener">PNAS template gallery</a> &mdash; select the <strong>single-column mathematics article template</strong> (second from left), then click <em>Open as Template</em> to copy it into your account. Follow the <a href="https://www.pnas.org/authors/submitting-your-manuscript" target="_blank" rel="noopener">PNAS author guidelines</a> for figures, references, and formatting. <strong>Remove the DRAFT watermark</strong> by editing the <code>.cls</code> file (set <code>display watermark = false</code>) &mdash; a small deduction applies if it stays. Ignore the template&rsquo;s &ldquo;feel free to exceed 10 pages&rdquo; note: <strong>the limit is 8 pages.</strong> Sections: Introduction &amp; related work, Data, Methods, Results (writing + figures/tables), Discussion, and the <em>Agentic Analysis</em> section &mdash; AI assistant transcripts plus a critical reflection on what you asked, accepted, rejected, and where the AI failed. Submit a compiled PDF alongside the <code>.tex</code> source.</p>
+        </div>
+      </div>
+      <div class="deliverable-item">
+        <div class="deliverable-weight">REPO</div>
+        <div class="deliverable-info">
+          <h4>Public GitHub repository</h4>
+          <p>Numbered sequential notebooks (<code>00_pull.ipynb</code>, <code>01_merge.ipynb</code>, &hellip;). README documenting inputs / function / outputs per notebook. Directory layout: <code>code/</code>, <code>data/</code> (or cloud link), <code>output/</code>. No spaces in filenames, no hardcoded paths, functions defined at notebook start, diagnostic output before and after every data merge.</p>
+        </div>
+      </div>
+      <div class="deliverable-item">
+        <div class="deliverable-weight">WEB</div>
+        <div class="deliverable-info">
+          <h4>Public project website</h4>
+          <p>Narrative arc: question &rarr; data &rarr; method &rarr; result &rarr; takeaway. Live and publicly accessible by the deadline; embed key figures. <strong>Platform is not flexible</strong> &mdash; build the site in <strong>React</strong> and deploy via <strong>Vercel</strong>. <strong>Pushes after the deadline = zero for the website component.</strong></p>
+        </div>
+      </div>
+      <div class="deliverable-item">
+        <div class="deliverable-weight">TALK</div>
+        <div class="deliverable-info">
+          <h4>6-minute presentation</h4>
+          <p>Live in class Tue 06/02 (last day). Hard 6-minute stop. Slides or live website demo. Followed by one instructor question with a 30-second response window. Focus on the headline finding and the evidence that supports it.</p>
+        </div>
       </div>
     </div>
   </section>
