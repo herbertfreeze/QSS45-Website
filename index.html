@@ -321,6 +321,14 @@
 
     tr.week-alt:hover { background: var(--green-muted); }
 
+    .xhour-tag {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--accent-warm);
+      margin-left: 0.35rem;
+    }
+
     tr.row-highlight {
       background: rgba(0, 105, 62, 0.04);
     }
@@ -599,75 +607,80 @@
             <td class="topic-cell">Course Overview</td>
             <td class="due-cell"><strong>Me Search</strong> (Sun 07/05)</td>
           </tr>
-          <tr>
-            <td class="date-cell"></td>
-            <td class="topic-cell">Regression</td>
-            <td class="due-cell"></td>
-          </tr>
           <tr class="week-alt">
             <td class="date-cell">Wed 07/08</td>
-            <td class="topic-cell">Linear Algebra + NumPy</td>
-            <td class="due-cell"><strong>Take Home 1</strong> (Sun 07/12)</td>
-          </tr>
-          <tr class="week-alt">
-            <td class="date-cell"></td>
-            <td class="topic-cell">Gradient Descent</td>
+            <td class="topic-cell">Regression</td>
             <td class="due-cell"></td>
           </tr>
           <tr>
             <td class="date-cell">Wed 07/15</td>
-            <td class="topic-cell">Decision Trees &amp; Random Forest</td>
-            <td class="due-cell"><strong>NotebookLLM Lit Review</strong> (Sun 07/19)</td>
+            <td class="topic-cell">Linear Algebra + NumPy</td>
+            <td class="due-cell"><strong>Take Home 1</strong> (Sun 07/19)</td>
           </tr>
-          <tr class="week-alt">
-            <td class="date-cell">Wed 07/22</td>
-            <td class="topic-cell">Gradient-Boosting Trees</td>
+          <tr>
+            <td class="date-cell"></td>
+            <td class="topic-cell">Gradient Descent</td>
             <td class="due-cell"></td>
           </tr>
           <tr class="week-alt">
+            <td class="date-cell">Wed 07/22</td>
+            <td class="topic-cell">Decision Trees</td>
+            <td class="due-cell"><strong>NotebookLLM Lit Review</strong> (Sun 07/26)</td>
+          </tr>
+          <tr class="week-alt">
             <td class="date-cell"></td>
-            <td class="topic-cell">SHAP Explainers</td>
+            <td class="topic-cell">Random Forest</td>
             <td class="due-cell"></td>
           </tr>
           <tr>
             <td class="date-cell">Wed 07/29</td>
-            <td class="topic-cell">Neural Networks</td>
-            <td class="due-cell"><strong>Initial Data Analysis</strong> (Sun 08/02)</td>
+            <td class="topic-cell">Gradient-Boosting Trees</td>
+            <td class="due-cell"></td>
           </tr>
           <tr>
             <td class="date-cell"></td>
-            <td class="topic-cell">Word Embeddings</td>
+            <td class="topic-cell">SHAP Explainers</td>
+            <td class="due-cell"></td>
+          </tr>
+          <tr class="week-alt">
+            <td class="date-cell">Tue 08/04 <span class="xhour-tag">(X-hour)</span></td>
+            <td class="topic-cell">Neural Networks</td>
             <td class="due-cell"></td>
           </tr>
           <tr class="week-alt">
             <td class="date-cell">Wed 08/05</td>
-            <td class="topic-cell">BERT Workflows for Text Analysis</td>
-            <td class="due-cell"></td>
+            <td class="topic-cell">Word Embeddings</td>
+            <td class="due-cell"><strong>Initial Data Analysis</strong> (Sun 08/09)</td>
           </tr>
           <tr class="week-alt">
             <td class="date-cell"></td>
-            <td class="topic-cell">Zero-Shot Classification</td>
+            <td class="topic-cell">BERT Workflows for Text Analysis</td>
             <td class="due-cell"></td>
           </tr>
           <tr>
             <td class="date-cell">Wed 08/12</td>
+            <td class="topic-cell">Zero-Shot Classification</td>
+            <td class="due-cell"></td>
+          </tr>
+          <tr>
+            <td class="date-cell"></td>
             <td class="topic-cell">GPT Workflows</td>
             <td class="due-cell"></td>
           </tr>
           <tr class="week-alt">
             <td class="date-cell">Wed 08/19</td>
             <td class="topic-cell">Reinforcement Learning</td>
-            <td class="due-cell"><strong>Final Deliverables</strong> (paper + repo + website + agentic analysis)</td>
+            <td class="due-cell"></td>
           </tr>
           <tr class="week-alt">
             <td class="date-cell"></td>
-            <td class="topic-cell">Social Network Analysis</td>
+            <td class="topic-cell">Work Session</td>
             <td class="due-cell"></td>
           </tr>
           <tr>
             <td class="date-cell">Wed 08/26</td>
             <td class="topic-cell">Presentations (6 min each)</td>
-            <td class="due-cell">Last day of class</td>
+            <td class="due-cell"><strong>Final Deliverables</strong> (paper + repo + website + agentic analysis)</td>
           </tr>
         </tbody>
       </table>
@@ -694,21 +707,21 @@
         <div class="deliverable-weight">10%</div>
         <div class="deliverable-info">
           <h4>Take Home 1</h4>
-          <p>Covers regression, linear algebra, and gradient descent. Notebook + 1-page memo + AI reflection. Due Sun 07/12.</p>
+          <p>Covers regression, linear algebra, and gradient descent. Notebook + 1-page memo + AI reflection. Due Sun 07/19.</p>
         </div>
       </div>
       <div class="deliverable-item">
         <div class="deliverable-weight">10%</div>
         <div class="deliverable-info">
           <h4>NotebookLLM Lit Review</h4>
-          <p>AI-assisted literature review using NotebookLLM. Curate sources, generate a Mind Map / Briefing Doc, and verify three NotebookLLM claims against the source. Due Sun 07/19.</p>
+          <p>AI-assisted literature review using NotebookLLM. Curate sources, generate a Mind Map / Briefing Doc, and verify three NotebookLLM claims against the source. Due Sun 07/26.</p>
         </div>
       </div>
       <div class="deliverable-item">
         <div class="deliverable-weight">15%</div>
         <div class="deliverable-info">
           <h4>Initial Data Analysis</h4>
-          <p>Overleaf memo exploring possible questions, relevant data fields, and preliminary findings. Due Sun 08/02.</p>
+          <p>Overleaf memo exploring possible questions, relevant data fields, and preliminary findings. Due Sun 08/09.</p>
         </div>
       </div>
       <div class="deliverable-item">
@@ -722,7 +735,7 @@
         <div class="deliverable-weight">45%</div>
         <div class="deliverable-info">
           <h4>Final Deliverables</h4>
-          <p>Paper (with agentic analysis section) + GitHub repo + public project website + 6-min presentation. Final deliverables due Wed 08/19; presentations in class Wed 08/26.</p>
+          <p>Paper (with agentic analysis section) + GitHub repo + public project website + 6-min presentation. Everything due Wed 08/26 (last day of class); presentations in class same day.</p>
         </div>
       </div>
     </div>
@@ -741,12 +754,12 @@
       <div class="overview-card">
         <div class="overview-card-number">15%</div>
         <h3>Initial Data Analysis</h3>
-        <p>Overleaf memo exploring possible questions, relevant data fields, and preliminary findings. Individual submission. Due Sun 08/02.</p>
+        <p>Overleaf memo exploring possible questions, relevant data fields, and preliminary findings. Individual submission. Due Sun 08/09.</p>
       </div>
       <div class="overview-card">
         <div class="overview-card-number">45%</div>
         <h3>Final Deliverables</h3>
-        <p>PNAS-style paper (with agentic analysis section) + GitHub repo + public project website + 6-min presentation. Paper, repo, and website due Wed 08/19; presentations in class Wed 08/26.</p>
+        <p>PNAS-style paper (with agentic analysis section) + GitHub repo + public project website + 6-min presentation. All deliverables due Wed 08/26; presentations in class the same day.</p>
       </div>
     </div>
 
